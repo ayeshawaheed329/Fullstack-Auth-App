@@ -2,30 +2,29 @@
   Boot component for application.
 */
 
-import React from 'react';
+import React from "react";
 
 // Redux
-import { Provider } from 'react-redux';
-import { createBrowserHistory } from 'history';
+import { Provider } from "react-redux";
+import { createBrowserHistory } from "history";
 
 // Antd
-import { ConfigProvider } from 'antd';
+import { ConfigProvider } from "antd";
 
 // Configuration
 import configureStore from "store/configureStore";
 
-// Storage 
-import StorageService from 'services/StorageService';
+// Storage
+import StorageService from "services/StorageService";
 
 // Components
-import App from 'App';
+import App from "App";
 
 // Stores & History
 const store = configureStore();
 const history = createBrowserHistory();
 
 function BootSetup() {
-
   // Save Platform Web
   StorageService.instance = new StorageService(localStorage);
 
@@ -34,23 +33,19 @@ function BootSetup() {
       theme={{
         token: {
           fontSize: 16,
-          fontFamily: 'DIN2014',
-          colorPrimary: '#ED4C2F',
+          fontFamily: "DIN2014",
+          colorPrimary: "#ED4C2F",
           borderRadius: 4,
-          controlHeightLG: 48
+          controlHeightLG: 48,
         },
-        hashed: false
+        hashed: false,
       }}
     >
-      <Provider
-        store={store}
-        history={history}
-      >
+      <Provider store={store} history={history}>
         <App />
       </Provider>
     </ConfigProvider>
   );
-
 }
 
 export default BootSetup;

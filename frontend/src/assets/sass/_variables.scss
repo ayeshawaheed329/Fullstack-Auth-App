@@ -1,0 +1,60 @@
+@use "sass:math";
+
+$html-font-size: 16px;
+
+@function stripUnit($value) {
+    @return math.div($value, $value * 0 + 1);
+}
+
+@function rem($pxValue) {
+    @return #{math.div(stripUnit($pxValue), stripUnit($html-font-size))}rem;
+}
+
+//Color Vars
+
+$color-white: #ffffff;
+$color-black: #000000;
+
+$color-primary: #2E3192;
+$color-theme-orange: #ED4C2F;
+// $color-primary: #ED4C2F;
+// $colorsecondary: #f16932;
+$color-content: #374254;
+$border-color: #DADCE0;
+// $field-bg: #eef0f2;
+// $heading-color: #32383F;
+// $color-red: #f70c0c;
+$theme-gray: #5F6368;
+// $colorprimaryblue: #DD9510;
+// $colororange:#f16932;
+$color-blue: #444DB4;
+// $colordarkblue: #1534a3;
+$color-orange: #ef4a23;
+$color-red: #ff0000;
+$color-danger: #ff4d4f;
+$color-error: #f03737;
+
+// theme-variables
+$color-silver: #cccccc;
+$light-blue: #F1F3F9;
+$light-blue-hover: #f4f8f9;
+$dusk-blue: #2e3092;
+$casper-9: #bfbfbf;
+$medium-gray:#5F636A;
+$medium-gray-dark:#444444;
+$dark-gray-light: #969CA5;
+$dark-gray: #323C47;
+
+//Font Family
+$font-primary: 'DIN2014',
+sans-serif;
+$font-secondary: 'Brandon-Grotesque',
+sans-serif;
+
+//Font Weight
+$font-weight-regular : 400;
+$font-weight-medium : 500;
+$font-weight-bold : 600;
+
+
+$success-color: #28a745;
