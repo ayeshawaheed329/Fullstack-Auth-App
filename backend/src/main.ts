@@ -4,7 +4,7 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 
 // module
 import helmet from 'helmet';
-import express from 'express';
+import * as express from 'express';
 
 // exception filter
 import { AllExceptionsFilter } from './all-exceptions.filter';
