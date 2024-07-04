@@ -19,6 +19,11 @@ import Password from "components/common/form-elements/password";
 // Constants
 import APP_URL from "constants/ApplicationUrls";
 
+// Actions
+import { Signin } from "store/actions/AuthActions";
+
+// helpers
+import { errorNotification, successNotification } from "helpers/Notification";
 
 // Localization
 import LOCALIZATION from "constants/Localization";
@@ -35,6 +40,16 @@ function SignIn() {
   const loading = useSelector((state) => state?.Auth?.loading);
 
   const onSubmit = (data) => {
+    dispatch(Signin(data)).then(
+      () => {
+        successNotification(LOCALIZATION.SUCCESSFULLY_SIGIN_MESSAGE);
+        history.push(APP_URL.HOME);
+      },
+      (e) => {
+        const msg = e?.response?.data?.message;
+        errorNotification(msg);
+      }
+    );
   };
 
   return (

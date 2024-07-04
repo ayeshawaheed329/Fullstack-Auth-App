@@ -15,7 +15,8 @@ function Password({
   label,
   placeholder,
   required,
-  validator
+  validator,
+  maxLength
 }) {
   // Rules
   let rules = [
@@ -32,6 +33,7 @@ function Password({
     >
       <Input.Password
         placeholder={placeholder}
+        maxLength={maxLength}
       />
     </Form.Item>
   );

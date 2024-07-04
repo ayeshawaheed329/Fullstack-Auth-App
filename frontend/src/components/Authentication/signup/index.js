@@ -1,9 +1,9 @@
 /*
-  Application Login Page
+  Application Signup Page
 */
 
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import {  useHistory } from "react-router-dom";
 
 // Redux
 import { useDispatch, useSelector } from "react-redux";
@@ -20,11 +20,16 @@ import Password from "components/common/form-elements/password";
 // Constants
 import APP_URL from "constants/ApplicationUrls";
 
+// Actions
+import { signup } from "store/actions/AuthActions";
+
+// helpers
+import { errorNotification, successNotification } from "helpers/Notification";
 
 // Localization
 import LOCALIZATION from "constants/Localization";
 
-const MIN_LENGTH = 8;        // as per requirement, password must contain atleast 8 characters
+const MIN_LENGTH = 8; // as per requirement, password must contain atleast 8 characters
 function SignUp() {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -37,7 +42,16 @@ function SignUp() {
   const loading = useSelector((state) => state?.Auth?.loading);
 
   const onSubmit = (data) => {
-    
+    dispatch(signup(data)).then(
+      () => {
+        successNotification(LOCALIZATION.SUCCESSFULLY_SIGNUP_MESSAGE);
+        history.push(APP_URL.SIGNIN);
+      },
+      (e) => {
+        const msg = e?.response?.data?.message;
+        errorNotification(msg);
+      }
+    );
   };
 
   // password validator function
@@ -45,7 +59,6 @@ function SignUp() {
     if (!value) {
       return Promise.resolve();
     }
-
 
     if (value.length < MIN_LENGTH) {
       return Promise.reject(LOCALIZATION.PASSWORD_MIN_LENGTH);
@@ -74,6 +87,7 @@ function SignUp() {
             name="name"
             required={true}
             placeholder={LOCALIZATION.NAME}
+            maxLength={100}
           />
         </div>
 
@@ -83,6 +97,7 @@ function SignUp() {
             name="email"
             required={true}
             placeholder={LOCALIZATION.EMAIL_ADDRESS}
+            maxLength={254}
           />
         </div>
 
@@ -93,6 +108,7 @@ function SignUp() {
             required={true}
             placeholder={LOCALIZATION.PASSWORD}
             validator={validatePassword}
+            maxLength={128}
           />
         </div>
         <Form.Item>

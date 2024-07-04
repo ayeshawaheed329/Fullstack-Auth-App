@@ -7,22 +7,43 @@ let initialState = {
 
 const Auth = (state = initialState, action) => {
   switch (action.type) {
-    // Login
-    case USER_ACTIONS.LOGIN_REQUEST:
+    // Sign up
+    case USER_ACTIONS.SIGNUP_REQUEST:
       return {
         ...state,
         loading: true,
         error: false,
       };
 
-    case USER_ACTIONS.LOGIN_SUCCESS:
+    case USER_ACTIONS.SIGNUP_SUCCESS:
       return {
         ...state,
         loading: false,
         error: false,
       };
 
-    case USER_ACTIONS.LOGIN_FAILURE:
+    case USER_ACTIONS.SIGNUP_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: true,
+      };
+    // Signin
+    case USER_ACTIONS.SIGNIN_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        error: false,
+      };
+
+    case USER_ACTIONS.SIGNIN_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: false,
+      };
+
+    case USER_ACTIONS.SIGNIN_FAILURE:
       return {
         ...state,
         loading: false,

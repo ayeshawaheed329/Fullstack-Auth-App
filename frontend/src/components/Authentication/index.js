@@ -1,5 +1,5 @@
 /*
-  Application Login Page Base Layout
+  Application Signin Page Base Layout
 */
 
 import React, { useEffect } from 'react';
@@ -73,8 +73,9 @@ function AuthenticationBase({
           {
             !!isSignInScreen &&
             <div className="back-link">
+              {LOCALIZATION.BACK_TO_SIGNUP}
               <Link to={APP_URL.SIGNUP} >
-                {LOCALIZATION.BACK_TO_SIGNUP}
+                {" "+ LOCALIZATION.SIGNUP}
               </Link>
             </div>
           }
