@@ -2,14 +2,19 @@ import { NestFactory, HttpAdapterHost } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { NestExpressApplication } from '@nestjs/platform-express';
 
-// module
+// modules
 import helmet from 'helmet';
 import * as express from 'express';
+import * as dotenv from 'dotenv';
 
 // exception filter
-import { AllExceptionsFilter } from './all-exceptions.filter';
+import { AllExceptionsFilter } from './exceptions/all-exceptions-filter';
+import { CustomValidationPipe } from './common/pipes/custom-validations.pipe';
 
 async function bootstrap() {
+  // Load environment variables from .env file
+  dotenv.config();
+
   // Create NestJS app instance
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     logger: ['error', 'warn'], // log warnings and error
@@ -39,6 +44,9 @@ async function bootstrap() {
     }),
   );
 
+  // Custom validator
+  app.useGlobalPipes(new CustomValidationPipe());
+
   // Get the HttpAdapterHost instance
   const httpAdapterHost = app.get(HttpAdapterHost);
 
@@ -46,7 +54,7 @@ async function bootstrap() {
   app.useGlobalFilters(new AllExceptionsFilter(httpAdapterHost));
 
   // Start the application and listen on given port
-  await app.listen(3001);
+  await app.listen(process.env.PORT);
 }
 
 bootstrap();

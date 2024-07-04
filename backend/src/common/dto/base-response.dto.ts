@@ -1,6 +1,6 @@
 'use strict';
 
-import { ResponseCode } from "constants/ResponseCode"; 
+import { ResponseCode } from "constants/response-codes"; 
 
 export class BaseResponseDto<T> {
     status: boolean;
