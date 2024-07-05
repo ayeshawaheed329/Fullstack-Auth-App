@@ -101,7 +101,7 @@ export class AuthService {
       // signin response
       const signinResponse = new ResponseCode(
         ResponseCode.SUCCESS.code,
-        LOCALIZATION.LOGIN_SUCCESSFULLY,
+        LOCALIZATION.SIGNIN_SUCCESSFULLY,
       );
       return new BaseResponseDto<{ token: string; userId: string }>(
         signinResponse,

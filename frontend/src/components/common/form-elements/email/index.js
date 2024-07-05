@@ -13,7 +13,7 @@ import LOCALIZATION from "constants/Localization";
 function Email({ name, label, placeholder, required, maxLength }) {
   // Rules
   let rules = [
-    { required: required, message: LOCALIZATION.REQUIRED },
+    { required: required, message: LOCALIZATION.EMAIL_REQUIRED },
     { type: "email", message: LOCALIZATION.INVALID_EMAIL },
   ];
 

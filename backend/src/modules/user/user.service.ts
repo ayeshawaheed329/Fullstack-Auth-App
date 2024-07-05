@@ -21,31 +21,31 @@ export class UserService {
   async createUser(
     name: string,
     email: string,
-    password: string,
+    password: string
   ): Promise<BaseResponseDto<any>> {
     try {
       const createdUser = await this.databaseService.user.create({
         data: {
           name,
           email,
-          password, // password is already hashed
+          password // password is already hashed
         },
       });
 
       const userCreated = new ResponseCode(
         ResponseCode.RESOURCE_CREATED.code,
-        LOCALIZATION.USER_CREATED,
+        LOCALIZATION.USER_CREATED
       );
 
       // return user name and email not password
       const data = {
         name: createdUser?.name,
-        email: createdUser?.email,
+        email: createdUser?.email
       };
       return new BaseResponseDto<{ name: string; email: string }>(
         userCreated,
         data,
-        true,
+        true
       );
     } catch (error) {
       // throw error will handled by all exception filter
@@ -57,7 +57,7 @@ export class UserService {
   async findUserByEmail(email: string): Promise<User | null> {
     const user = await this.databaseService.user.findUnique({
       where: {
-        email,
+        email
       },
     });
 

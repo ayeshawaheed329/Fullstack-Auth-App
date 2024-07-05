@@ -18,7 +18,7 @@ function Text({
   maxLength
 }) {
   // Rules
-  let rules = [{ required: required, message: LOCALIZATION.REQUIRED }];
+  let rules = [{ required: required, message: LOCALIZATION.NAME_REQUIRED }];
 
   return (
     <Form.Item

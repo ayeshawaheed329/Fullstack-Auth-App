@@ -42,7 +42,7 @@ const BaseLayout = Loadable({
 
 function App() {
   return (
-    <div className={`App`}>
+    <div className={"App"}>
       <BrowserRouter>
         <Switch>
           {/* Signup */}

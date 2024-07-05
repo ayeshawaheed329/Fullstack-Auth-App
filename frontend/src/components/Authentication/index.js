@@ -15,21 +15,17 @@ import {
 // Antd
 import { Col, Row } from "antd";
 
-//Components
+// Components
 import Loading from "components/loading";
 
-// Actions
-// import { logout } from "store/actions/AuthAction";
+// Images
+import eLogo from "assets/images/logo.png";
 
 // Constants
 import APP_URL from 'constants/ApplicationUrls';
 
 // Localization
 import LOCALIZATION from "constants/Localization";
-
-
-// Style & Icons
-// import './style.scss';
 
 function AuthenticationBase({
   loading,
@@ -53,29 +49,35 @@ function AuthenticationBase({
       <Row className="authentication-wrapper">
         <Col xs={0} md={12} xl={16} className="image-col">
           <div className="content">
-            {/* <h2>{ LOCALIZATION.LOGIN_PAGE_TAGLINE }</h2> */}
-            <img
-              src="https://as1.ftcdn.net/v2/jpg/07/12/13/32/1000_F_712133227_DHAVWre192vBLBfR3QnJrja7GmAZuZLD.jpg"
+            {/* <img
+              src="https://images.unsplash.com/photo-1604933834215-2a64950311bd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGUlMjBsZWFybmluZyUyMGxvZ298ZW58MHx8MHx8fDA%3D"
               alt="Sample"
-              className="sample-image"
-            />
+             className="btn"
+            /> */}
           </div>
         </Col>
         <Col xs={24} md={12} xl={8} className="form-col">
           <img
-            className="login-logo"
-            src={<div>Logo</div>}
+            className="signin-logo"
+            src={eLogo}
             alt="logo"
           />
           <div className='shadow-card'>
             {children}
           </div>
           {
-            !!isSignInScreen &&
+            !!isSignInScreen ?
             <div className="back-link">
               {LOCALIZATION.BACK_TO_SIGNUP}
               <Link to={APP_URL.SIGNUP} >
-                {" "+ LOCALIZATION.SIGNUP}
+                {LOCALIZATION.SIGNUP}
+              </Link>
+            </div>
+            :
+            <div className="back-link">
+              {LOCALIZATION.BACK_TO_SIGIN}
+              <Link to={APP_URL.SIGNIN} >
+                {LOCALIZATION.SIGNIN}
               </Link>
             </div>
           }

@@ -20,7 +20,7 @@ function Password({
 }) {
   // Rules
   let rules = [
-    { required: required, message: LOCALIZATION.REQUIRED },
+    { required: required, message: LOCALIZATION.PASSWORD_REQUIRED },
     { whitespace: true, message: LOCALIZATION.NO_SPACES_ALLOWED },
     { validator: validator}
   ];

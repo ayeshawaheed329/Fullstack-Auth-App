@@ -10,7 +10,7 @@ import { SigninUserDto } from './dto/signin-user.dto';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @Post('signup')
+  @Post('sign-up')
   @HttpCode(HttpStatus.CREATED) 
   async signup(
     @Body() createUserDto: CreateUserDto,
@@ -24,7 +24,7 @@ export class AuthController {
     }
   }
 
-  @Post('signin')
+  @Post('sign-in')
   @HttpCode(HttpStatus.OK)
   async signin(
     @Body() signinUserDto: SigninUserDto,
