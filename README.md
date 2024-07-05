@@ -50,7 +50,7 @@ This is a full-stack app that enables users to signup and sign with all the vali
    The following depdencies should be installed.
    - Node.js
    - Npm or Yarn
-   
+
 
 2. **Setup**:
    - Clone the repository using https://github.com/ayeshawaheed329/Fullstack-Auth-App.git.
@@ -65,7 +65,11 @@ This is a full-stack app that enables users to signup and sign with all the vali
    - Run `npm install` to install depdencies.
    - Run `npm start` to launch the server.
 
-5. **Access**:
+5. **Database**:
+   - Database connection string is provided in .env file. You can replace it with your database string as well.
+   - Database collection is exported and provided in this directory as well.
+
+6. **Access**:
    - Open the browser and visit `http://localhost:3000` to access the front-end application.
    - For making Api requests, use `http://localhost:3001` as base url with end points.
 
